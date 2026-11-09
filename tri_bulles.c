@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+// version pre oprion
 void bubble_sort(int arr[], int n)
 {
     int i, j, temp;
