@@ -13,15 +13,24 @@ pipeline {
                 sh 'make'
             }
         }
-        stage('Test') {
+        stage('Dev / Test') {
             steps {
                 echo 'Running tests...'
                 sh 'make test'
             }
         }
+        stage('Pré-prod') {
+            steps {
+                echo 'Analyse de la mémoire avec Valgrind...'
+                sh 'valgrind --leak-check=full ./tri_bulles'
+            }
+        }
         stage('Production') {
             steps {
-                echo 'Installation en production...'
+                echo 'Préparation pour la production...'
+                sh 'make clean'
+                sh 'make'
+                sh 'strip tri_bulles'
                 sh 'make install'
             }
         }
