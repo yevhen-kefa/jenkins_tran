@@ -10,6 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compilation...'
+                sh 'make clean'
                 sh 'make'
             }
         }
