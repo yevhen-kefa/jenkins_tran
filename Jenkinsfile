@@ -19,5 +19,11 @@ pipeline {
                 sh 'make test'
             }
         }
+        stage('Production') {
+            steps {
+                echo 'Installation en production...'
+                sh 'make install'
+            }
+        }
     }
 }
